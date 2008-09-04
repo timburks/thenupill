@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		220E99780E6FAF02002E2580 /* libNu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 220E99760E6FAF02002E2580 /* libNu.a */; };
 		220E99790E6FAF02002E2580 /* libNuBonjour.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 220E99770E6FAF02002E2580 /* libNuBonjour.a */; };
+		221913430E7075EA00B1D143 /* locator.m in Sources */ = {isa = PBXBuildFile; fileRef = 221913420E7075EA00B1D143 /* locator.m */; };
+		221913460E70767300B1D143 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221913450E70767300B1D143 /* CoreLocation.framework */; };
 		224BA4A90E702E240007D7CC /* main.nu in Resources */ = {isa = PBXBuildFile; fileRef = 224BA4A80E702E240007D7CC /* main.nu */; };
 		224BA5310E7048810007D7CC /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 224BA52D0E7048810007D7CC /* Background.png */; };
 		224BA5320E7048810007D7CC /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 224BA52E0E7048810007D7CC /* Button.png */; };
@@ -26,12 +28,14 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		220E99760E6FAF02002E2580 /* libNu.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNu.a; path = local/lib/libNu.a; sourceTree = "<group>"; };
 		220E99770E6FAF02002E2580 /* libNuBonjour.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNuBonjour.a; path = local/lib/libNuBonjour.a; sourceTree = "<group>"; };
+		221913420E7075EA00B1D143 /* locator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = locator.m; path = objc/locator.m; sourceTree = "<group>"; };
+		221913450E70767300B1D143 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		224BA4A80E702E240007D7CC /* main.nu */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = main.nu; path = nu/main.nu; sourceTree = "<group>"; };
 		224BA52D0E7048810007D7CC /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background.png; path = images/Background.png; sourceTree = "<group>"; };
 		224BA52E0E7048810007D7CC /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button.png; path = images/Button.png; sourceTree = "<group>"; };
 		224BA52F0E7048810007D7CC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = images/Default.png; sourceTree = "<group>"; };
 		224BA5300E7048810007D7CC /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = images/Icon.png; sourceTree = "<group>"; };
-		2256A3CF0E675A2300EF9041 /* NuCoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NuCoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2256A3CF0E675A2300EF9041 /* TheNuPill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheNuPill.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = objc/main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = objc/Prefix.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,6 +50,7 @@
 				2256A3C80E675A2300EF9041 /* CoreGraphics.framework in Frameworks */,
 				220E99780E6FAF02002E2580 /* libNu.a in Frameworks */,
 				220E99790E6FAF02002E2580 /* libNuBonjour.a in Frameworks */,
+				221913460E70767300B1D143 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,7 +60,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2256A3CF0E675A2300EF9041 /* NuCoder.app */,
+				2256A3CF0E675A2300EF9041 /* TheNuPill.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 			children = (
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				32CA4F630368D1EE00C91783 /* Prefix.pch */,
+				221913420E7075EA00B1D143 /* locator.m */,
 			);
 			name = objc;
 			sourceTree = "<group>";
@@ -142,6 +148,7 @@
 			children = (
 				1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				221913450E70767300B1D143 /* CoreLocation.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -150,9 +157,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2256A3AA0E675A2300EF9041 /* Nucoder */ = {
+		2256A3AA0E675A2300EF9041 /* TheNuPill */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2256A3CB0E675A2300EF9041 /* Build configuration list for PBXNativeTarget "Nucoder" */;
+			buildConfigurationList = 2256A3CB0E675A2300EF9041 /* Build configuration list for PBXNativeTarget "TheNuPill" */;
 			buildPhases = (
 				2256A3AB0E675A2300EF9041 /* Resources */,
 				2256A3BF0E675A2300EF9041 /* Sources */,
@@ -162,9 +169,9 @@
 			);
 			dependencies = (
 			);
-			name = Nucoder;
+			name = TheNuPill;
 			productName = Masyu;
-			productReference = 2256A3CF0E675A2300EF9041 /* NuCoder.app */;
+			productReference = 2256A3CF0E675A2300EF9041 /* TheNuPill.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -179,7 +186,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2256A3AA0E675A2300EF9041 /* Nucoder */,
+				2256A3AA0E675A2300EF9041 /* TheNuPill */,
 			);
 		};
 /* End PBXProject section */
@@ -205,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2256A3C00E675A2300EF9041 /* main.m in Sources */,
+				221913430E7075EA00B1D143 /* locator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,7 +237,7 @@
 					"\\\"$(SRCROOT)/local/lib\\\"",
 					"\"$(SRCROOT)/local/lib\"",
 				);
-				PRODUCT_NAME = NuCoder;
+				PRODUCT_NAME = TheNuPill;
 			};
 			name = Debug;
 		};
@@ -247,7 +255,7 @@
 					"\\\"$(SRCROOT)/local/lib\\\"",
 					"\"$(SRCROOT)/local/lib\"",
 				);
-				PRODUCT_NAME = Masyu;
+				PRODUCT_NAME = TheNuPill;
 			};
 			name = Release;
 		};
@@ -265,7 +273,7 @@
 					"\\\"$(SRCROOT)/local/lib\\\"",
 					"\"$(SRCROOT)/local/lib\"",
 				);
-				PRODUCT_NAME = Masyu;
+				PRODUCT_NAME = TheNuPill;
 			};
 			name = Distribution;
 		};
@@ -325,7 +333,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2256A3CB0E675A2300EF9041 /* Build configuration list for PBXNativeTarget "Nucoder" */ = {
+		2256A3CB0E675A2300EF9041 /* Build configuration list for PBXNativeTarget "TheNuPill" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2256A3CC0E675A2300EF9041 /* Debug */,

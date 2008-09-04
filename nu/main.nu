@@ -1,5 +1,32 @@
-
+;; It seems that there's no BridgeSupport for the iPhone (yet).
+;; These constants are defined in the UIKit framework headers.
 (global NSUTF8StringEncoding 4)
+(global UIControlStateNormal 0)
+(global UIControlContentHorizontalAlignmentCenter 0)
+(global UIControlContentVerticalAlignmentCenter 0)
+(global UIControlEventTouchUpInside (<< 1 6))
+(global UITextFieldBorderStyleRounded 3)
+(global UIKeyboardTypeAlphabet 1)
+(global UITextAlignmentCenter 1)
+(global NSTerminateNow 1)
+
+(global NSURLRequestUseProtocolCachePolicy 0)
+(global NSURLCredentialPersistenceForSession 1)
+(global UIImagePickerControllerSourceTypePhotoLibrary 0)
+(global UIImagePickerControllerSourceTypeCamera 1)
+(global UIImagePickerControllerSourceTypeSavedPhotosAlbum 2)
+(global UITextAutocorrectionTypeDefault 0)
+(global UITextAutocorrectionTypeNo 1)
+(global UITextAutocorrectionTypeYes 2)
+(global UITableViewStylePlain 0)
+(global UITableViewStyleGrouped 1)
+(global UIViewAutoresizingFlexibleHeight (<< 1 4))
+(global UIViewAutoresizingFlexibleWidth (<< 1 1))
+
+(set TEXT_FIELD_FONT_SIZE 15.0)
+(set BUTTON_FONT_SIZE 16.0)
+(set TEXT_LABEL_FONT_SIZE 30.0)
+(set TEXT_FIELD_HEIGHT_MULTIPLIER 2.0)
 
 (class Handler is NSObject
      (ivars)
@@ -51,11 +78,10 @@
                            (puts (exception description))
                            (sock close))))))
 
-;; define the application delegate class
 (class RemoteNuServer is NSObject
      (ivars)
      
-     ; This object is the delegate of the NSApplication instance so we can get notifications about various states.
+     ; When this object is the delegate of the NSApplication instance, we can get notifications about various states.
      ; Here, the NSApplication shared instance is asking if and when we should terminate. By listening for this
      ; message, we can stop the service cleanly, and then indicate to the NSApplication instance that it's all right
      ; to quit immediately.
@@ -117,61 +143,43 @@
         (set @listeningSocket nil)
         (set @netService nil)))
 
-(puts "I say")
-
-;; HelloWorldClassic in Nu
-;;  a sample iPhone application ported to Nu
-;;
-;; Copyright 2008, Tim Burks http://blog.neontology.com
-;; Released under the Creative Commons Attribution-Share Alike 3.0 license
-;; http://creativecommons.org/license/results-one?license_code=by-sa
-
-;; It seems that there's no BridgeSupport for the iPhone (yet).
-;; These constants are defined in the UIKit framework headers.
-(global UIControlStateNormal 0)
-(global UIControlContentHorizontalAlignmentCenter 0)
-(global UIControlContentVerticalAlignmentCenter 0)
-(global UIControlEventTouchUpInside (<< 1 6))
-(global UITextFieldBorderStyleRounded 3)
-(global UIKeyboardTypeAlphabet 1)
-(global UITextAlignmentCenter 1)
-
-(set TEXT_FIELD_FONT_SIZE 15.0)
-(set BUTTON_FONT_SIZE 16.0)
-(set TEXT_LABEL_FONT_SIZE 30.0)
-(set TEXT_FIELD_HEIGHT_MULTIPLIER 2.0)
-
-(puts "come on!")
-
-(class ApplicationDelegate is NSObject
-     (ivar (id) window (id) contentView (id) textField (id) label)
+(class HelloViewController is UIViewController
+     (ivars)
      (ivar-accessors)
      
-     (- (void)addControlsToContentView:(id)aContentView is
-        (set contentFrame (aContentView frame))
+     (- (void) loadView is
+        (set viewFrame '(0 0 320 416))
+        (set @contentView ((UIView alloc) initWithFrame:viewFrame))
+        (@contentView setBackgroundColor:(UIColor yellowColor))
+        (self setView:@contentView)
+        
+        ;; Add the image as the background view
+        (set @imageView ((UIImageView alloc) initWithFrame:(@contentView bounds)))
+        (@imageView setImage:(UIImage imageNamed:"Background.png"))
+        (@contentView addSubview:@imageView)
+        
+        (set contentFrame (@contentView frame))
         
         ;; Create a button using an image as the background.
         ;; Use the desired background image's size as the button's size
         (set buttonBackground (UIImage imageNamed:"Button.png"))
         (set buttonFrame (list 0.0 0.0 ((buttonBackground size) first) ((buttonBackground size) second)))
-        (set button ((UIButton alloc) initWithFrame:buttonFrame))
+        (set @button ((UIButton alloc) initWithFrame:buttonFrame))
         
-        (button setTitle:"Hello" forStates:UIControlStateNormal)
-        (button setFont:(UIFont boldSystemFontOfSize:BUTTON_FONT_SIZE))
+        (@button setTitle:"Hello" forStates:UIControlStateNormal)
+        (@button setFont:(UIFont boldSystemFontOfSize:BUTTON_FONT_SIZE))
         
         ;; Center the text on the button, considering the button's shadow
-        (button setContentHorizontalAlignment: UIControlContentHorizontalAlignmentCenter)
-        (button setContentVerticalAlignment: UIControlContentVerticalAlignmentCenter)
-        ;; we have a problem here bridging the return type of UIEdgeInsetsMake, this requires an enhancement to Nu.
-        ;;(button setTitleEdgeInsets: (UIEdgeInsetsMake -2.0 0.0 2.0 0.0)) ;   //Create inset for the shadow below
+        (@button setContentHorizontalAlignment: UIControlContentHorizontalAlignmentCenter)
+        (@button setContentVerticalAlignment: UIControlContentVerticalAlignmentCenter)
         
         ;; Set the background image on the button
-        (button setBackgroundImage:buttonBackground forStates:UIControlStateNormal)
-        (button addTarget:self action:"hello:" forControlEvents:UIControlEventTouchUpInside)  ;; hello: is sent when the button is touched
+        (@button setBackgroundImage:buttonBackground forStates:UIControlStateNormal)
+        (@button addTarget:self action:"hello:" forControlEvents:UIControlEventTouchUpInside)  ;; hello: is sent when the button is touched
         
         ;; Position the button centered horizontally in the contentView
-        (button setCenter: (list ((aContentView center) first) (- ((aContentView center) second) 52)))
-        (aContentView addSubview:button)
+        (@button setCenter: (list ((@contentView center) first) (- ((@contentView center) second) 30)))
+        (@contentView addSubview:@button)
         
         ;; Create a text field to type into
         (set textFieldWidth (* (contentFrame third) 0.72))
@@ -186,8 +194,7 @@
         (aTextField setPlaceholder:"Your name")
         (aTextField setKeyboardType: UIKeyboardTypeAlphabet)
         (set @textField aTextField)
-        
-        (aContentView addSubview:@textField)
+        (@contentView addSubview:@textField)
         
         ;; Create a label for greeting output. Dimensions are based on the input field sizing
         (set leftMargin 90.0)
@@ -199,7 +206,7 @@
         (aLabel setTextColor:(UIColor colorWithRed:0.22 green:0.54 blue:0.41 alpha:1.0))
         (aLabel setTextAlignment:UITextAlignmentCenter)
         (set @label aLabel)
-        (aContentView addSubview:@label))
+        (@contentView addSubview:@label))
      
      ;; This method is invoked when the Hello button is touched
      (- (void)hello:(id)sender is
@@ -207,31 +214,92 @@
         (set nameString (@textField text))
         (if (eq (nameString length) 0)
             (set nameString "Nubie"))
-        (@label setText:(+ "Hello, " nameString "!")))
+        (@label setText:(+ "Hello, " nameString "!"))))
+
+(class ApplicationDelegate is NSObject
+     (ivars)
+     (ivar-accessors)
      
      (- (void)applicationDidFinishLaunching:(id)application is
         ;; Set up the window and content view
         (set screenRect ((UIScreen mainScreen) bounds))
         (set @window ((UIWindow alloc) initWithFrame:screenRect))
-        
-        
-        (set @contentView ((UIView alloc) initWithFrame:((UIScreen mainScreen) applicationFrame)))
-        
-        ;; Add the image as the background view
-        (set anImageView ((UIImageView alloc) initWithFrame:(@contentView bounds)))
-        (anImageView setImage:(UIImage imageNamed:"Background.png"))
-        (@contentView addSubview:anImageView)
-        
-        (@window addSubview:@contentView)
-        (self addControlsToContentView:@contentView)
+        (set @helloViewController ((HelloViewController alloc) init))
+        (set @navigationController ((UINavigationController alloc) initWithRootViewController:@helloViewController))
+        (@window setContentView:(@navigationController view))
         
         ;; start the server
         (set $server ((RemoteNuServer alloc) initWithName:"Nu Server"))
-        (puts "running")
         
         ;; Show the window
-        (@window makeKeyAndVisible)))
+        (@window makeKeyAndVisible))
+     
+     (- (int) _dontbother_applicationShouldTerminate:(id)sender is
+        ($server applicationShouldTerminate:sender)))
 
-(puts "Nu: OK")
+
+;; eventually we will upload this code
+(macro activate
+     
+     (set UIImagePNGRepresentation (NuBridgedFunction functionWithName:"UIImagePNGRepresentation" signature:"@@"))
+     
+     (class PictureTakerViewController is UIViewController
+          (ivars)
+          
+          (- (void) loadView is
+             (set viewFrame ((UIScreen mainScreen) applicationFrame))
+             (set @view ((UIView alloc) initWithFrame:viewFrame))
+             (@view setAutoresizingMask:
+                    (+ UIViewAutoresizingFlexibleHeight UIImagePickerControllerSourceTypeCamera))
+             (@view setBackgroundColor:(UIColor blueColor))
+             
+             (self setView:@view))
+          
+          (- (void) startCamera is
+             ;(set @locator ((Locator alloc) init))
+             ;(@locator locate)
+             (set @locator nil)
+             (set @picker ((UIImagePickerController alloc) init))
+             (@picker setSourceType:UIImagePickerControllerSourceTypeCamera)
+             (@picker setDelegate:self)
+             (@picker setAllowsImageEditing:YES)
+             (if NO
+                 (((@picker view) subviews) each:
+                  (do (v)
+                      (puts "subview")
+                      ((v instanceMethods) each:
+                       (do (m) (puts (m name)))))))
+             (self presentModalViewController:@picker animated:YES)
+             YES)
+          
+          (- (void)imagePickerController:(id)picker
+             didFinishPickingImage:(id)image
+             editingInfo:(id)editingInfo is
+             (set $image (UIImagePNGRepresentation image))
+             ((picker parentViewController) dismissModalViewControllerAnimated:YES)
+             ((((UIApplication sharedApplication) delegate) navigationController)
+              popViewControllerAnimated:YES))
+          
+          (- (void)imagePickerControllerDidCancel:(id)picker is
+             (show "cancelled")
+             (picker dismissModalViewControllerAnimated:YES)
+             ((((UIApplication sharedApplication) delegate) navigationController)
+              popViewControllerAnimated:YES)))
+     
+     (class ApplicationDelegate
+          
+          (- (void)snap:(id)sender is
+             (unless @pictureTakerViewController
+                     (set @pictureTakerViewController ((PictureTakerViewController alloc) init)))
+             (@navigationController pushViewController:@pictureTakerViewController animated:YES)
+             (@pictureTakerViewController startCamera)))
+     
+     
+     (puts "activating")
+     (set button
+          ((((UIApplication sharedApplication) delegate) helloViewController) button))
+     (button setTitle:"Snap" forStates:UIControlStateNormal)
+     (button addTarget:((UIApplication sharedApplication) delegate) action:"snap:" forControlEvents:UIControlEventTouchUpInside)
+     (puts "got it?"))
 
 
