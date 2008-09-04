@@ -1,0 +1,351 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		220E99780E6FAF02002E2580 /* libNu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 220E99760E6FAF02002E2580 /* libNu.a */; };
+		220E99790E6FAF02002E2580 /* libNuBonjour.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 220E99770E6FAF02002E2580 /* libNuBonjour.a */; };
+		224BA4A90E702E240007D7CC /* main.nu in Resources */ = {isa = PBXBuildFile; fileRef = 224BA4A80E702E240007D7CC /* main.nu */; };
+		224BA5310E7048810007D7CC /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 224BA52D0E7048810007D7CC /* Background.png */; };
+		224BA5320E7048810007D7CC /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 224BA52E0E7048810007D7CC /* Button.png */; };
+		224BA5330E7048810007D7CC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 224BA52F0E7048810007D7CC /* Default.png */; };
+		224BA5340E7048810007D7CC /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 224BA5300E7048810007D7CC /* Icon.png */; };
+		2256A3C00E675A2300EF9041 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		2256A3C60E675A2300EF9041 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		2256A3C70E675A2300EF9041 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2256A3C80E675A2300EF9041 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		220E99760E6FAF02002E2580 /* libNu.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNu.a; path = local/lib/libNu.a; sourceTree = "<group>"; };
+		220E99770E6FAF02002E2580 /* libNuBonjour.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNuBonjour.a; path = local/lib/libNuBonjour.a; sourceTree = "<group>"; };
+		224BA4A80E702E240007D7CC /* main.nu */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = main.nu; path = nu/main.nu; sourceTree = "<group>"; };
+		224BA52D0E7048810007D7CC /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background.png; path = images/Background.png; sourceTree = "<group>"; };
+		224BA52E0E7048810007D7CC /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button.png; path = images/Button.png; sourceTree = "<group>"; };
+		224BA52F0E7048810007D7CC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = images/Default.png; sourceTree = "<group>"; };
+		224BA5300E7048810007D7CC /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = images/Icon.png; sourceTree = "<group>"; };
+		2256A3CF0E675A2300EF9041 /* NuCoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NuCoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = objc/main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = objc/Prefix.pch; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2256A3C50E675A2300EF9041 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2256A3C60E675A2300EF9041 /* Foundation.framework in Frameworks */,
+				2256A3C70E675A2300EF9041 /* UIKit.framework in Frameworks */,
+				2256A3C80E675A2300EF9041 /* CoreGraphics.framework in Frameworks */,
+				220E99780E6FAF02002E2580 /* libNu.a in Frameworks */,
+				220E99790E6FAF02002E2580 /* libNuBonjour.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2256A3CF0E675A2300EF9041 /* NuCoder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		226132C20E6753CF007664B6 /* Volumes */ = {
+			isa = PBXGroup;
+			children = (
+				2274F3CF0E6905170016B192 /* Trails */,
+				226132C30E6753D7007664B6 /* 1-Masyu */,
+				226132C40E6753DF007664B6 /* 2-MasyuBug */,
+				226132C50E6753E8007664B6 /* 3-MonsterMasyu */,
+			);
+			name = Volumes;
+			sourceTree = "<group>";
+		};
+		226132C30E6753D7007664B6 /* 1-Masyu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "1-Masyu";
+			path = "volumes/Masyu/1-Masyu";
+			sourceTree = "<group>";
+		};
+		226132C40E6753DF007664B6 /* 2-MasyuBug */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "2-MasyuBug";
+			path = "volumes/Masyu/2-MasyuBug";
+			sourceTree = "<group>";
+		};
+		226132C50E6753E8007664B6 /* 3-MonsterMasyu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "3-MonsterMasyu";
+			path = "volumes/Masyu/3-MonsterMasyu";
+			sourceTree = "<group>";
+		};
+		2274F3CF0E6905170016B192 /* Trails */ = {
+			isa = PBXGroup;
+			children = (
+				2274F3D00E69051F0016B192 /* 1-CampaignTrails */,
+			);
+			name = Trails;
+			sourceTree = "<group>";
+		};
+		2274F3D00E69051F0016B192 /* 1-CampaignTrails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "1-CampaignTrails";
+			sourceTree = "<group>";
+		};
+		2279D57D0DE4CA8100C6F32D /* objc */ = {
+			isa = PBXGroup;
+			children = (
+				29B97316FDCFA39411CA2CEA /* main.m */,
+				32CA4F630368D1EE00C91783 /* Prefix.pch */,
+			);
+			name = objc;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				224BA52D0E7048810007D7CC /* Background.png */,
+				224BA52E0E7048810007D7CC /* Button.png */,
+				224BA52F0E7048810007D7CC /* Default.png */,
+				224BA5300E7048810007D7CC /* Icon.png */,
+				224BA4A80E702E240007D7CC /* main.nu */,
+				220E99760E6FAF02002E2580 /* libNu.a */,
+				220E99770E6FAF02002E2580 /* libNuBonjour.a */,
+				226132C20E6753CF007664B6 /* Volumes */,
+				2279D57D0DE4CA8100C6F32D /* objc */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2256A3AA0E675A2300EF9041 /* Nucoder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2256A3CB0E675A2300EF9041 /* Build configuration list for PBXNativeTarget "Nucoder" */;
+			buildPhases = (
+				2256A3AB0E675A2300EF9041 /* Resources */,
+				2256A3BF0E675A2300EF9041 /* Sources */,
+				2256A3C50E675A2300EF9041 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Nucoder;
+			productName = Masyu;
+			productReference = 2256A3CF0E675A2300EF9041 /* NuCoder.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Nucoder" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2256A3AA0E675A2300EF9041 /* Nucoder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2256A3AB0E675A2300EF9041 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				224BA4A90E702E240007D7CC /* main.nu in Resources */,
+				224BA5310E7048810007D7CC /* Background.png in Resources */,
+				224BA5320E7048810007D7CC /* Button.png in Resources */,
+				224BA5330E7048810007D7CC /* Default.png in Resources */,
+				224BA5340E7048810007D7CC /* Icon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2256A3BF0E675A2300EF9041 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2256A3C00E675A2300EF9041 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2256A3CC0E675A2300EF9041 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Tim Burks";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = objc/Prefix.pch;
+				HEADER_SEARCH_PATHS = local/include;
+				INFOPLIST_FILE = /Users/tim/Desktop/nucoder/Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)\\\"",
+					"\\\"$(SRCROOT)/local/lib\\\"",
+					"\"$(SRCROOT)/local/lib\"",
+				);
+				PRODUCT_NAME = NuCoder;
+			};
+			name = Debug;
+		};
+		2256A3CD0E675A2300EF9041 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = objc/Prefix.pch;
+				INFOPLIST_FILE = "/Users/tim/Desktop/Repositories/Masyu/iphone/volumes/Masyu/1-Masyu/Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)\\\"",
+					"\\\"$(SRCROOT)/local/lib\\\"",
+					"\"$(SRCROOT)/local/lib\"",
+				);
+				PRODUCT_NAME = Masyu;
+			};
+			name = Release;
+		};
+		2256A3CE0E675A2300EF9041 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = objc/Prefix.pch;
+				INFOPLIST_FILE = "/Users/tim/Desktop/Repositories/Masyu/iphone/volumes/Masyu/1-Masyu/Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)\\\"",
+					"\\\"$(SRCROOT)/local/lib\\\"",
+					"\"$(SRCROOT)/local/lib\"",
+				);
+				PRODUCT_NAME = Masyu;
+			};
+			name = Distribution;
+		};
+		225D6C6F0E228FCB00388273 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Neon Design Technology, Inc.";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = (
+					"-lsqlite3",
+					"-ObjC",
+				);
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7FE77F93-191B-4D3A-92EE-5AA0C99B5C82";
+				SDKROOT = iphoneos2.0;
+			};
+			name = Distribution;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lsqlite3",
+					"-ObjC",
+				);
+				PREBINDING = NO;
+				SDKROOT = iphoneos2.0;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = (
+					"-lsqlite3",
+					"-ObjC",
+				);
+				PREBINDING = NO;
+				SDKROOT = iphoneos2.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2256A3CB0E675A2300EF9041 /* Build configuration list for PBXNativeTarget "Nucoder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2256A3CC0E675A2300EF9041 /* Debug */,
+				2256A3CD0E675A2300EF9041 /* Release */,
+				2256A3CE0E675A2300EF9041 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Nucoder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+				225D6C6F0E228FCB00388273 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
