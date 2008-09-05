@@ -36,6 +36,7 @@
         self)
      
      (- (void)socketConnected:(id)sock is
+        (set $socket sock)
         (puts "handler connected")
         (set @data (NSMutableData data)))
      
@@ -79,7 +80,7 @@
                            (sock close))))))
 
 (class RemoteNuServer is NSObject
-     (ivars)
+     (ivars) (ivar-accessors)
      
      ; When this object is the delegate of the NSApplication instance, we can get notifications about various states.
      ; Here, the NSApplication shared instance is asking if and when we should terminate. By listening for this
@@ -237,11 +238,52 @@
      (- (int) _dontbother_applicationShouldTerminate:(id)sender is
         ($server applicationShouldTerminate:sender)))
 
+(puts "123")
 
 ;; eventually we will upload this code
 (macro activate
      
      (set UIImagePNGRepresentation (NuBridgedFunction functionWithName:"UIImagePNGRepresentation" signature:"@@"))
+     
+     (class NSMutableData
+          (- (void) appendString:(id) string is
+             (puts (+ "appending string: " string))
+             (self appendData:(string dataUsingEncoding:NSUTF8StringEncoding))))
+     
+     (class RequestAgent is NSObject
+          (ivars)
+          
+          (- (void) setCredential:(id) credential is (set @credential credential))
+          
+          (- (void)run:(id) actions is
+             (set @actions (cdr actions))
+             ((car actions) self))
+          
+          (- (void)makeRequest:(id) request is
+             (puts "making request")
+             (set @theRequest request)
+             (set @theConnection ((NSURLConnection alloc) initWithRequest:@theRequest delegate:self))
+             (set @receivedData (NSMutableData data)))
+          
+          (- (void)connection:(id)connection didReceiveResponse:(id)response is (@receivedData setLength:0))
+          
+          (- (void)connection:(id)connection didReceiveData:(id)data is (@receivedData appendData:data))
+          
+          (- (void)connection:(id)connection didReceiveAuthenticationChallenge:(id) challenge is
+             (puts "challenged!")
+             ((challenge sender) useCredential:@credential forAuthenticationChallenge:challenge))
+          
+          (- (void)connection:(id)connection didFailWithError:(id)error is
+             (puts (+ "Connection failed, error " (error localizedDescription) ((error userInfo) description))))
+          
+          (- (void)connectionDidFinishLoading:(id)connection is
+             (puts "finished loading")
+             (set @result ((NSString alloc) initWithData:@receivedData encoding:NSUTF8StringEncoding))
+             (if @actions
+                 (set block (car @actions))
+                 (set @actions (cdr @actions))
+                 (block self))))
+     
      
      (class PictureTakerViewController is UIViewController
           (ivars)
@@ -276,6 +318,45 @@
              didFinishPickingImage:(id)image
              editingInfo:(id)editingInfo is
              (set $image (UIImagePNGRepresentation image))
+             (if $image
+                 (then
+                      (puts "uploading image")
+                      ;; upload the image
+                      (set myLocation
+                           (if @locator
+                               then (+ ((@locator latitude) stringValue) " " ((@locator longitude) stringValue))
+                               else ""))
+                      
+                      (unless @agent (set @agent ((RequestAgent alloc) init)))
+                      (@agent run:
+                              (list
+                                   (do (self)
+                                       # post an image to a url
+                                       (set url (NSURL URLWithString:@"http://169.254.84.157:3000/postimage"))
+                                       (set request (NSMutableURLRequest requestWithURL:url))
+                                       (request setHTTPMethod:"POST")
+                                       (set boundary "1n2b5blks9854kl234")
+                                       (set contentType (+ "multipart/form-data; boundary=" boundary))
+                                       (request addValue:contentType forHTTPHeaderField:"Content-Type")
+                                       (set body (NSMutableData data))
+                                       (puts "building form")
+                                       (body appendData:((+ "--" boundary "\r\n") dataUsingEncoding:NSUTF8StringEncoding))
+                                       (body appendData:("Content-Disposition: form-data; name=\"name\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding))
+                                       (body appendData:("image.jpg" dataUsingEncoding:NSUTF8StringEncoding))
+                                       (body appendData:((+ "\r\n--" boundary "\r\n") dataUsingEncoding:NSUTF8StringEncoding))
+                                       (body appendData:("Content-Disposition: form-data; name=\"image\"\r\n" dataUsingEncoding:NSUTF8StringEncoding))
+                                       (body appendData:("Content-Type: image/jpg4\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding))
+                                       (body appendData:$image)
+                                       ;;(body appendData:((+ "\r\n--" boundary "\r\n") dataUsingEncoding:NSUTF8StringEncoding))
+                                       ;;(body appendData:("Content-Disposition: form-data; name=\"location\"\r\n" dataUsingEncoding:NSUTF8StringEncoding))
+                                       ;;(body appendData:(myLocation dataUsingEncoding:NSUTF8StringEncoding))
+                                       (body appendData:((+ "\r\n--" boundary "--\r\n") dataUsingEncoding:NSUTF8StringEncoding))
+                                       (puts "setting body")
+                                       (request setHTTPBody:body)
+                                       (self makeRequest:request))
+                                   (do (self)
+                                       (puts (@result description))))))
+                 (else (puts "error creating image")))
              ((picker parentViewController) dismissModalViewControllerAnimated:YES)
              ((((UIApplication sharedApplication) delegate) navigationController)
               popViewControllerAnimated:YES))
@@ -302,4 +383,6 @@
      (button addTarget:((UIApplication sharedApplication) delegate) action:"snap:" forControlEvents:UIControlEventTouchUpInside)
      (puts "got it?"))
 
+
+(puts "456")
 
