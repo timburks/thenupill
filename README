@@ -1,0 +1,25 @@
+
+The Nu Pill
+a C4[2] IronCoder project
+
+Summary:
+- Nu on the iPhone
+- Acorn plugin with Nu
+- Load web server into Acorn
+- Describe Nu iPhone app
+- Load remote console into Acorn
+- Browse Nu iPhone app
+- Upload code
+- Take photo, photo and location are sent to Acorn
+- Acorn gets Google Map from location, displays both images
+- Show how WebViews can be used to scrape map tiles.
+
+Requires:
+- Nu (http://programming.nu)
+- NuBonjour (on both iPhone and MacOS)
+- NuAcorn plugin
+- NuHTTP (to be loaded into Acorn)
+and also:
+- Acorn (http://flyingmeat.com/acorn)
+- iPhone SDK and developer certificates
+

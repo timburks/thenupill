@@ -113,6 +113,27 @@
         (@serviceBeingResolved setDelegate:self)
         (@serviceBeingResolved resolve)))
 
-(set $remote ((RemoteNuBrowser alloc) init))
+(unless $remote
+        (set $remote ((RemoteNuBrowser alloc) init)))
 
-(global -- (macro -- (($iphone do: (margs stringValue)))))
+(global --
+        (macro _
+             (($iphone do: (margs stringValue)))))
+
+(global sendip
+        (macro _
+             (($iphone do:"(set $host \"#{(NuSocketAddress localIPAddress)}\")"))))
+
+(global sendfile
+        (macro _
+             (set openDialog (NSOpenPanel openPanel))
+             (openDialog setCanChooseFiles:YES)
+             (openDialog setCanChooseDirectories:NO)
+             (if (== (openDialog runModalForDirectory:nil file:nil types:(array "nu")) NSOKButton)
+                 ((openDialog filenames) each:
+                  (do (filename)
+                      (puts "sending file #{filename}")
+                      (set file (NSString stringWithContentsOfFile:filename))
+                      (puts file)
+                      ($iphone do:file))))
+             nil))
