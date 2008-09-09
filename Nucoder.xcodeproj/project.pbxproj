@@ -230,7 +230,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = objc/Prefix.pch;
 				HEADER_SEARCH_PATHS = local/include;
-				INFOPLIST_FILE = /Users/tim/Desktop/nucoder/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)\\\"",
