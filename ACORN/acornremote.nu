@@ -98,8 +98,8 @@
                 ;; Cancel the resolve now that we have an IPv4 address.
                 (sender stop)
                 (set @serviceBeingResolved nil)
-                (puts (mySocketAddress hostAddress))
-                (puts ((mySocketAddress port) stringValue))
+                ;(puts (mySocketAddress hostAddress))
+                ;(puts ((mySocketAddress port) stringValue))
                 (set remoteConnection (AGSocket tcpSocket))
                 (remoteConnection setDelegate:(set $iphone ((ClientHandler alloc) initWithSocket:remoteConnection)))
                 (remoteConnection connectToAddressInBackground:mySocketAddress))))
@@ -119,6 +119,37 @@
 (global --
         (macro _
              (($iphone do: (margs stringValue)))))
+
+(class RemoteParser is NuParser
+     (ivars) (ivar-accessors)
+     
+     (- (id) prompt is
+        (if (self incomplete) (then "IPHONE -- ") (else "IPHONE >> ")))
+     
+     (- (id) initWithConsole:(id) console is
+        (super init)
+        (puts "Hello, iPhone!")
+        (set @console console)
+        (set @text "")
+        (set @parent (console valueForIvar:"parser"))
+        (console setValue:self forIvar:"parser")
+        self)
+     
+     (- (id) parse:(id) string is
+        (@text appendString:string)
+        (super parse:string))
+     
+     (- (id) eval:(id) code is
+        (if (eq (code second) 'quit)
+            (puts "Goodbye, iPhone!")
+            (@console setValue:@parent forIvar:"parser"))
+        (set result @text)
+        ($iphone do:@text)
+        (set @text "")
+        result))
+
+(global iphone
+        (macro _ (set $remote ((RemoteParser alloc) initWithConsole:($console valueForIvar:"console")))))
 
 (global sendip
         (macro _

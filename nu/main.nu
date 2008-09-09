@@ -12,9 +12,6 @@
 
 (global NSURLRequestUseProtocolCachePolicy 0)
 (global NSURLCredentialPersistenceForSession 1)
-(global UIImagePickerControllerSourceTypePhotoLibrary 0)
-(global UIImagePickerControllerSourceTypeCamera 1)
-(global UIImagePickerControllerSourceTypeSavedPhotosAlbum 2)
 (global UITextAutocorrectionTypeDefault 0)
 (global UITextAutocorrectionTypeNo 1)
 (global UITextAutocorrectionTypeYes 2)
@@ -235,10 +232,7 @@
         (set $server ((RemoteNuServer alloc) initWithName:"Nu Server"))
         
         ;; Show the window
-        (@window makeKeyAndVisible))
-     
-     (- (int) _dontbother_applicationShouldTerminate:(id)sender is
-        ($server applicationShouldTerminate:sender)))
+        (@window makeKeyAndVisible)))
 
 (puts "Nu code loaded")
 

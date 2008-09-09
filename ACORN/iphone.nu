@@ -41,16 +41,18 @@
             (set @actions (cdr @actions))
             (block self))))
 
+(global UIImagePickerControllerSourceTypePhotoLibrary 0)
+(global UIImagePickerControllerSourceTypeCamera 1)
+(global UIImagePickerControllerSourceTypeSavedPhotosAlbum 2)
+
+(set $source UIImagePickerControllerSourceTypeCamera)
+
 (class PictureTakerViewController is UIViewController
      (ivars)
      
      (- (void) loadView is
         (set viewFrame ((UIScreen mainScreen) applicationFrame))
         (set @view ((UIView alloc) initWithFrame:viewFrame))
-        (@view setAutoresizingMask:
-               (+ UIViewAutoresizingFlexibleHeight UIImagePickerControllerSourceTypeCamera))
-        (@view setBackgroundColor:(UIColor blueColor))
-        
         (self setView:@view))
      
      (- (void) startCamera is
@@ -58,9 +60,9 @@
         ;(@locator locate)
         (set @locator nil)
         (set @picker ((UIImagePickerController alloc) init))
-        (@picker setSourceType:UIImagePickerControllerSourceTypeCamera)
+        (@picker setSourceType:$source)
         (@picker setDelegate:self)
-        (@picker setAllowsImageEditing:NO)
+        (@picker setAllowsImageEditing:YES)
         (if NO
             (((@picker view) subviews) each:
              (do (v)

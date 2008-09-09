@@ -57,7 +57,7 @@
 (class MapScraper is WebPageImageScraper
      
      (- loadMapWithLatitude:(id)lat longitude:(id)long is
-        (self loadMapWithScale:14 latitude:lat longitude:long width:800 height:600))
+        (self loadMapWithScale:14 latitude:lat longitude:long width:320 height:320))
      
      (- loadMapWithScale:(id)s latitude:(id)lat longitude:(id)long width:(id)width height:(id)height is
         (set path "http://www.neontology.com/maps.php?s=#{s}&lat=#{lat}&long=#{long}&w=#{width}&h=#{height}")
